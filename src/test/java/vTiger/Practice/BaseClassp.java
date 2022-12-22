@@ -10,5 +10,8 @@ public class BaseClassp extends BaseClass{
 	public void test()
 	{
 		System.out.println("hi");
+		
+		
+		System.out.println("hi");
 	}
 }
