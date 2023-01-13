@@ -92,7 +92,7 @@ public class BaseClass {
 	}
 	
 	//@AfterTest
-	@AfterClass(groups = {"SmokeSuite","ReggressionSuite"})
+     @AfterClass(groups = {"SmokeSuite","ReggressionSuite"})
 	public void acConfig()
 	{
 		driver.quit();
