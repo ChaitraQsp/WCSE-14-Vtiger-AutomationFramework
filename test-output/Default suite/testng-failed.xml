@@ -3,17 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="vTiger.Practice.WebTables">
+      <class name="vTiger.Practice.ReTryAnalyserPractice">
         <methods>
-          <include name="asConfig"/>
-          <include name="bsConfig"/>
-          <include name="bmConfig"/>
-          <include name="amConfig"/>
-          <include name="bcConfig"/>
-          <include name="acConfig"/>
-          <include name="clickallCheckboxes"/>
+          <include name="prcaticeRetry"/>
         </methods>
-      </class> <!-- vTiger.Practice.WebTables -->
+      </class> <!-- vTiger.Practice.ReTryAnalyserPractice -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

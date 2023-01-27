@@ -9,6 +9,7 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -87,6 +88,7 @@ public class BaseClass {
 	{
 		HomePage hp = new HomePage(driver);
 		hp.logoutOfApp(driver);
+		//Reporter.log("Logout of  app Sucessfully",true);
 		System.out.println("========== Logout Of App is Successfull =======");
 		
 	}

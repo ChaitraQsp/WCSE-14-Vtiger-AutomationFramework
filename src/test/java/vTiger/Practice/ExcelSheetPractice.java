@@ -1,42 +1,60 @@
 package vTiger.Practice;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
-import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
+
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class ExcelSheetPractice {
 	
-	public static void main(String[] args) throws EncryptedDocumentException, IOException {
+	/**
+	 * @param args
+	 * @throws InterruptedException
+	 */
+	public static void main(String[] args) throws InterruptedException {
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
+		driver.get("https://www.hyrtutorials.com/p/calendar-practice.html");
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//input[@id='first_date_picker']")).click();
+		Thread.sleep(3000);
+		int day=03;
+		//driver.findElement(By.xpath("//table[@class='ui-datepicker-calendar']//a[text()="+day+"]")).click();
+		//Thread.sleep(3000);
+		//WebElement ele = driver.findElement(By.xpath("//div[@class='ui-datepicker-title']"));
+		////Thread.sleep(3000);
+	//	String header=ele.getText();
+	//	System.out.println(header);
+		//WebElement elenext = driver.findElement(By.xpath("//a[@class='ui-datepicker-next ui-corner-all']"));
+		Thread.sleep(3000);
+		String flag="false";
+		while(flag=="false") {
+			WebElement ele = driver.findElement(By.xpath("//div[@class='ui-datepicker-title']"));
+			Thread.sleep(3000);
+			String header=ele.getText();
+			System.out.println(header);
+			if(header.contains("August 2023")) {
+			driver.findElement(By.xpath("//table[@class='ui-datepicker-calendar']//a[text()="+day+"]")).click();
+			Thread.sleep(3000);
+			flag="true";
+			break;
+		}
 		
-		//Step 1: Load File location Into File input stream
-		FileInputStream fis = new FileInputStream(".\\src\\test\\resources\\TestData.xlsx");
-		
-		//Step 2: Create a work book
-		Workbook wb = WorkbookFactory.create(fis);
-		
-		//Step 3: Navigate to required sheet
-		Sheet sh = wb.getSheet("Organizations");
-		
-		//Step 4: Navigate to required row
-		Row rw = sh.getRow(7);
-		
-		//Step 5: navigate to required Cell
-		Cell ce = rw.getCell(4);
-		
-		//Step 6: Capture the data present in that cell
-		String value = ce.getStringCellValue();
-		System.out.println(value);
-		
-		String value1 = rw.getCell(2).getStringCellValue();
-		System.out.println(value1);
+			else {
+				driver.findElement(By.xpath("//a[@class='ui-datepicker-next ui-corner-all']")).click();
+				Thread.sleep(3000);
+			}
 		
 	}
-
+		driver.close();
+}
 }

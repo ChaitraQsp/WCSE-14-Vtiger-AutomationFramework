@@ -25,6 +25,7 @@ public class SampleJDBCPractice {
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/srinugumma", "root", "root");
 		
 		
+		
 		//step:3 to execute query
 		Statement stm = con.createStatement();
 		
